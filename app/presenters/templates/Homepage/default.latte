@@ -1,0 +1,34 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+<div id="banner">
+	<h1 n:block=title>Congratulations!</h1>
+</div>
+
+<div id="content">
+    {snippetArea filterFormArea}
+        {include '../components/form.latte'}
+    {/snippetArea}
+
+</div>
+{/block}
+
+{block scripts}
+{include parent}
+	<script>
+        $(function () {
+            // search-input
+            var form = document.getElementById('frm-filterForm');
+            $(document).on('change', '[data-change-filterForm]', function (e) {
+                /* $("#frm-filterForm").submit();*/
+                naja.uiHandler.submitForm(form);
+
+            });
+        });
+	</script>
+{/block}
+
+
+{block head}
+
+{/block}

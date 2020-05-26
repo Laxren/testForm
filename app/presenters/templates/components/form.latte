@@ -1,0 +1,43 @@
+{snippet filterForm}
+	<form n:name="filterForm" class="ajax filterForm">
+		<ul class="errors" n:if="$form->hasErrors()">
+			<li n:foreach="$form->errors as $error">{$error}</li>
+		</ul>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="search err">
+					<button type="submit" value="Submit"><span class="fas fa-search"></span></button>
+                    {input search class => search-input, data-change-filterForm => '', placeholder => 'Vyhledat...'}
+				</div>
+				<div class="selectbox err">
+                    {input order_by class => selectbox-input, data-change-filterForm => ''}
+				</div>
+				<div class="row">
+					<div class="col-6">
+						<div class="price err">
+                            {input start_price class => price-input, data-change-filterForm => ''}
+						</div>
+					</div>
+					<div class="col-6 ">
+						<div class="price err">
+                            {input end_price class => price-input, data-change-filterForm => ''}
+						</div>
+					</div>
+				</div>
+				<div class="checkbox-content err">
+                    {foreach $form[categories]->items as $key => $label}
+						<label class="checkbox-l" n:name="categories:$key">{$label}
+							<input n:name="categories:$key" data-change-filterForm/>
+							<span></span>
+						</label>
+                    {/foreach}
+				</div>
+			</div>
+		</div>
+
+        <div class="button-offset">
+            {input filter class => 'small', data-submit-filterForm => ''}
+        </div>
+
+	</form>
+{/snippet}
